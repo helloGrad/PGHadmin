@@ -58,7 +58,5 @@ public class MemberController {
 		System.out.println(authUser.getMbDstnct());
 		return "mypage";
 	}
-	
-	
 
 }

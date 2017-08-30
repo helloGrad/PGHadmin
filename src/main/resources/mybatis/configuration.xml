@@ -5,6 +5,9 @@
 		<typeAlias alias="memberVo" type="com.grad.admin.vo.MemberVo"/>
 		<typeAlias alias="organzVo" type="com.grad.admin.vo.OrganzVo"/>
 		<typeAlias alias="resrchAcrsltVo" type="com.grad.admin.vo.ResrchAcrsltVo"/>
+		<typeAlias alias="notiVo" type="com.grad.admin.vo.NotiVo"/>
+		<typeAlias alias="apndngFileVo" type="com.grad.admin.vo.ApndngFileVo"/>
+		<typeAlias alias="codeVo" type="com.grad.admin.vo.CodeVo"/>
 	</typeAliases>
 
 	
@@ -12,5 +15,7 @@
 	<mappers>
 		<mapper resource="mybatis/mappers/member.xml" />
 		<mapper resource="mybatis/mappers/organz.xml" />
+		<mapper resource="mybatis/mappers/noti.xml" />
+		<mapper resource="mybatis/mappers/apndngfile.xml" />
 	</mappers>
 </configuration>
