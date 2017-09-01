@@ -175,7 +175,7 @@ var NoResultsMsg = "검색 결과가 없음";
 var checkList = [];
 var clickDelete=function(id){
 	//선택제거되면 리스트에 다시 추가
-//	availableTags.push($("#"+id+" span").text())
+	delete checkList[checkList.indexOf($("#"+id+" span").text())];
 	$("#"+id).remove();
 }
 

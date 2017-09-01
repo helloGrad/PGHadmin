@@ -201,7 +201,8 @@ var codeList = JSON.parse('${codeList}');
 		src="${pageContext.request.contextPath}/resources/js/search.js"></script>
  	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/organzjs/labdetail.js"></script>  
-
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/organzjs/insertgrad.js"></script>  
 
 </body>
 </html>
