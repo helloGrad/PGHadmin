@@ -67,7 +67,15 @@ public class OrganzService {
 		return organzDao.getResrchNo(resrchAcrsltNo);
 	}
 
-	/////////////////////////////////////////////// insert ////////////////////////////////////////
+	/*
+	 * 박가혜 연구실 맞춤정보 리스트 가져오기 2017-08-29
+	 */
+
+	public List<CodeVo> getOrganzInfo(int orgnzNo) {
+		return organzDao.selectOrganzInfo(orgnzNo);
+	}
+	/////////////////////////////////////////////// insert
+	/////////////////////////////////////////////// ////////////////////////////////////////
 
 	/*
 	 * 허주한 대학원, 대학교, 학과
@@ -85,7 +93,7 @@ public class OrganzService {
 		}
 		return false;
 	}
-	
+
 	/*
 	 * 박가혜 연구실
 	 */
@@ -103,20 +111,34 @@ public class OrganzService {
 		organzDao.insertResrch(resrchAcrsltVo);
 
 	}
+	
+	
+	/*
+	 * 정예린 맞춤정보 입력 
+	 */
 
+	public void setOrganzInfo(int lastId, List<String> cdlist) {
 
+		CodeVo codeVo = new CodeVo();
+		Integer id = lastId;
 
-	///////////////////////////////////////// update  ///////////////////////////////////////////////
+		for (int i = 0; i < cdlist.size(); i++) {
+			codeVo.setOrgnzNo(id.longValue());
+			codeVo.setCdId(cdlist.get(i));
+			
+			organzDao.setOgranzInfo(codeVo);
+		}
+	}
+
+	///////////////////////////////////////// update
+	///////////////////////////////////////// ///////////////////////////////////////////////
 
 	/*
 	 * 허주한 대학원, 대학교, 학과
 	 */
 
 	public void update(OrganzVo organzVo, String type, String prntsOrgnzStr) {
-		
-		System.out.println(organzVo);
-		System.out.println(type);
-		
+
 		if (prntsOrgnzStr.isEmpty() || prntsOrgnzStr.equals(null) || prntsOrgnzStr.equals("0")) {
 			organzVo.setPrntsOrgnzNo(-1);
 		} else {
@@ -145,7 +167,16 @@ public class OrganzService {
 
 	}
 
-	///////////////////////////// ㄱㄴㄷ순 페이징 service ///////////////////////////////////
+	/*
+	 * 박가혜 연구실 맞춤정보 입력하기 2017-08-29
+	 */
+	public void deleteOrganzInfo(int orgnzNo) {
+		organzDao.deleteOrganzInfo(orgnzNo);
+
+	}
+
+	///////////////////////////// ㄱㄴㄷ순 페이징 service
+	///////////////////////////// ///////////////////////////////////
 
 	/*
 	 * 허주한
@@ -162,57 +193,29 @@ public class OrganzService {
 		return organzDao.getListByChar(map);
 	}
 
-	
 	///////////////////////////// 기관 검색하기 ///////////////////////////////////
-	
+
 	/*
 	 * 정예린 기관 검색하기
 	 */
 	public List<OrganzVo> getResultList(Map<String, Object> map) {
 		return organzDao.getResultList(map);
 	}
-	
-	
-	
-	/*
-	 * 박가혜 연구실 맞춤정보 입력하기 2017-08-29
-	 */
-	public void setOrganzInfo(int orgnzNo,List<String> cdlist) {
-
-		
-		
-		for(int i=0; i<cdlist.size(); i++) {
-			
-			
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("orgnzNo", orgnzNo);
-			map.put("cdlist", cdlist.get(i));
-			
-			
-			organzDao.insertOrganzInfo(map);
-
-			
+/////////////////////////////////////////////맞춤검색/////////////////////////////////
+		/*
+		* 허주한 2017/08/29
+		*/
+		public List<CodeVo> getCode(String type) {
+		// TODO Auto-generated method stub
+		String dstnct=null;
+		if(type.equals("학과")) {
+		dstnct="학과";
+		} else if(type.equals("연구실")){
+		dstnct="연구분야";
 		}
 		
-	}
-	
-	/*
-	 * 박가혜 연구실 맞춤정보 입력하기 2017-08-29
-	 */
-	public void deleteOrganzInfo(int orgnzNo) {
+		return organzDao.getCode(dstnct);
+		}
 
-	
-			organzDao.deleteOrganzInfo(orgnzNo);
-
-
-		
-	}
-	/*
-	 * 박가혜 연구실 맞춤정보   리스트 가져오기 2017-08-29
-	 */
-	
-	public List<CodeVo> getOrganzInfo(int orgnzNo) {
-		return organzDao.selectOrganzInfo(orgnzNo);
-	}
 
 }
