@@ -128,29 +128,22 @@ public class OrganzController {
 		ApndngFileVo vo = null;
 
 		
-	
-		
-		System.out.println(codeForm.getCodes().size());
-		List<String> infoList = new ArrayList<String>(); //연구분야
-		
-	
-		
-	
-		if(codeForm.getCodes().size() == 0) {
-			
-			
-			
-		}else {
-		
-			for(int i=0; i<codeForm.getCodes().size(); i++) {
-				
-				
+		/*
+		 * 박가혜 2017-09-01 연구분야 리스트
+		 */
+
+		List<String> infoList = new ArrayList<String>();
+
+		if (codeForm.getCodes().size() == 0) {
+
+		} else {
+
+			for (int i = 0; i < codeForm.getCodes().size(); i++) {
+
 				infoList.add(i, codeForm.getCodes().get(i).getCdId());
 			}
-			
-			
+
 		}
-		
 		
 
 		if (organzVo.getOrgnzDstnct().equals("연구실")) {
@@ -169,8 +162,10 @@ public class OrganzController {
 		}
 			
 		lastId = organzService.lastInsertId();
+		
+		
 		/*
-		 * 정예린
+		 * 박가혜 2017-09-01 연구분야 리스트
 		 */
 		if (cdlist.size() != 0) {
 
@@ -178,6 +173,8 @@ public class OrganzController {
 			organzService.setOrganzInfo(lastId,infoList);
 		}
 
+		
+		
 		// 허주한 서비스로 빼기
 
 		if (attachFile != null) {
@@ -206,7 +203,7 @@ public class OrganzController {
 	public String updateGradForm(Model model, @RequestParam int no, @RequestParam String type) {
 
 		/*
-		 * 박가혜 2017-08-30
+		 * 박가혜 2017-08-30 연구분야 리스트 
 		 */
 		List<CodeVo> codeList = organzService.getOrganzInfo(no);
 		model.addAttribute("codeList", codeList);
@@ -238,65 +235,46 @@ public class OrganzController {
 	public String updateGrad(Model model, @ModelAttribute OrganzVo organzVo, @RequestParam String type,
 			@RequestParam(value = "prntsOrgnzStr", required = true, defaultValue = "") String prntsOrgnzStr,
 			@RequestParam(value = "cdlist", required = true, defaultValue = "") List<String> cdlist,@ModelAttribute("codeForm") CodeForm codeForm) {
+	
+	
 		/*
-		 * 박가혜 2017-08-30
+		 * 박가혜 2017-08-30 연구분야 리스트 
 		 */
-	
-	
 		
-		List<String> infoList = new ArrayList<String>(); //연구분야
-		
-		System.out.println(cdlist);
-		System.out.println(codeForm);
-		
+		List<String> infoList = new ArrayList<String>();
 
-		int index=0; //null값 넘어오는거 수정해야함 ....
-		
-		if (codeForm.getCodes()!=null) {
-			
-			
+		int index = 0;
+
+		if (codeForm.getCodes() != null) {
+
 			for (int i = 0; i < codeForm.getCodes().size(); i++) {
-				
-				
-				if(codeForm.getCodes().get(i).getCdId() == null)
-				{
-					
-				}else {
-					
+
+				if (codeForm.getCodes().get(i).getCdId() == null) {
+
+				} else {
+
 					infoList.add(index, codeForm.getCodes().get(i).getCdId());
 					index++;
 				}
 
-				
-
 			}
 
-		} 
+		}
 
-	
-		
-		for (int i = 0; i <infoList.size(); i++) {
-			
-			System.out.println("i"+infoList.get(i));
-		}
-		
-	
-		
-		if(cdlist.size() != 0 || codeForm.getCodes()!=null) { //받아오는게 있을경우만 입력
-			
-			
-			
+		if (cdlist.size() != 0 || codeForm.getCodes() != null) { // 받아오는게 있을경우만 입력
+
 			organzService.deleteOrganzInfo(organzVo.getOrgnzNo());
-			organzService.setOrganzInfo(organzVo.getOrgnzNo(),cdlist);
-			organzService.setOrganzInfo(organzVo.getOrgnzNo(),infoList);
-			
-			
-			
-		}else {
-			
-			System.out.println("완전삭제");
+			organzService.setOrganzInfo(organzVo.getOrgnzNo(), cdlist);
+			organzService.setOrganzInfo(organzVo.getOrgnzNo(), infoList);
+
+		} else {
+
 			organzService.deleteOrganzInfo(organzVo.getOrgnzNo());
 		}
+
+		// 여기까지 
+		
+		
 		
 		
 		if (type.equals("연구실")) {	
