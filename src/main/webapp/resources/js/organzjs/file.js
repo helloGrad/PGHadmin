@@ -1,7 +1,7 @@
 $(function() {
 	$('#file').change(
 			function() {
-				// alert($('#file').prop("files")[0].name);
+				
 				for (var i = 0; i < $('#file').prop("files").length; i++) {
 					$('#apndngfiles').append(
 							"<p>" + $('#file').prop("files")[i].name + "</p>")
@@ -19,7 +19,3 @@ $(function() {
 					})
 
 })
-
-// function addFile(){
-// $('#filetable').append( $('#preset tr').clone() );
-// }

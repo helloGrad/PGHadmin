@@ -6,13 +6,13 @@
 
 
 <div class="col-lg-4 centering">
-	<h3>${list[0].orgnzDstnct } 페이지</h3>
-	<a id="gradBtn" class="btn btn-primary"
-		href="${pageContext.servletContext.contextPath }/organz/list">대학원</a>
+	<h3>${list[0].orgnzDstnct }페이지</h3>
 	<a id="uniBtn" class="btn btn-primary"
 		href="${pageContext.servletContext.contextPath }/organz/unilist">대학교</a>
+	<a id="gradBtn" class="btn btn-primary"
+		href="${pageContext.servletContext.contextPath }/organz/list">대학원</a>
 	<a id="deptBtn" class="btn btn-primary"
-		href="${pageContext.servletContext.contextPath }/organz/deptlist">학과</a>
+		href="${pageContext.servletContext.contextPath }/organz/deptlist">학과/학부</a>
 	<a id="labBtn" class="btn btn-primary"
 		href="${pageContext.servletContext.contextPath }/organz/lablist">연구실</a>
 	<c:if

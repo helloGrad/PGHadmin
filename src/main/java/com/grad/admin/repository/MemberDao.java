@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.grad.admin.vo.MemberVo;
 
-/*
- * 정예린 : admin으로 옮김
- */
+
 
 @Repository
 public class MemberDao {

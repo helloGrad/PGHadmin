@@ -39,9 +39,6 @@ public class ApndngFileService {
 			Long fileSize = multipartFile.getSize();
 			String saveFileName = genSaveFileName(extName);
 
-//			System.out.println("##########");
-//			System.out.println("fileName = "+ orginalFileName + ", fileSzie = "+fileSize + ", extName = " + extName + ", saveFileName = " + saveFileName);
-//			System.out.println("##########");
 
 			wrtieFile(multipartFile, saveFileName);
 			
@@ -63,7 +60,7 @@ public class ApndngFileService {
 	}
 
 	private String genSaveFileName(String extName) {
-		// TODO Auto-generated method stub
+		
 		String fileName = "";
 
 		Calendar calendar = Calendar.getInstance();
@@ -101,12 +98,12 @@ public class ApndngFileService {
 	}
 
 	public ApndngFileVo getFileInfo(Long id) {
-		// TODO Auto-generated method stub
+		
 		return apndngFileDao.getFileInfo(id);
 	}
 
 	public List<ApndngFileVo> getFileList(int no, String type) {
-		// TODO Auto-generated method stub
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("no", no);
 		map.put("type", type);

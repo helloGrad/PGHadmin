@@ -22,9 +22,9 @@ public class MemberVo {
 	private String telNo;
 	private String hndphNo;
 	private String email;
-	
 	private String cdId;
 
+	
 	public Long getMbNo() {
 		return mbNo;
 	}

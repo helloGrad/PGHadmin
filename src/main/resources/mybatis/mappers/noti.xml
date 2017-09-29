@@ -49,7 +49,7 @@
 	<insert id="insertNoti" parameterType="map">
 		<![CDATA[
 			 insert into slctn_noti (SLCTN_NOTI_NO, ADMIN_NO, ORGNZ_NO, NOTI_REGST_DT, SLCTN_BEGIN_DT, SLCTN_END_DT, SLCTN_TITLE, SLCTN_TEXT,SUPRT_QUALF, SLCTN_NOPS, SLSN_MTH,
-			SBMT_DOC_TEXT, CHRGR_DSTNCT,CHRGR_NM,CHRGR_TEL_NO,CHRGR_EMAIL, SLCTN_NOTI_DSTNCT,
+			SBMT_DOC_TEXT, CHRGR_DSTNCT,CHRGR_NM,CHRGR_TEL_NO,CHRGR_EMAIL, pchrg_yn, slctn_yycl, slctn_semstr,SLCTN_NOTI_DSTNCT,
 		]]>
 		<choose>
 			<when test="tabnm =='grad'">
@@ -67,7 +67,7 @@
 		<![CDATA[
 	 		values (null,10,#{notiVo.orgnzNo },now(),#{notiVo.slctnBeginDt },#{notiVo.slctnEndDt },
 			#{notiVo.slctnTitle }, #{notiVo.slctnText },#{notiVo.suprtQualf },#{notiVo.slctnNops },#{notiVo.slsnMth },#{notiVo.sbmtDocText },
-			'비회원',#{notiVo.chrgrNm },#{notiVo.chrgrTelNo },#{notiVo.chrgrEmail },		
+			'비회원',#{notiVo.chrgrNm },#{notiVo.chrgrTelNo },#{notiVo.chrgrEmail },#{notiVo.pchrgYn },#{notiVo.slctnYycl },#{notiVo.slctnSemstr },		
 		]]>
 		<choose>
 			<when test="tabnm =='grad'">
@@ -85,7 +85,19 @@
 				]]>
 			</when>
 		</choose>
+		<selectKey keyProperty="id" resultType="int">
+		<![CDATA[ 
+        SELECT LAST_INSERT_ID()
+        ]]>
+		</selectKey>
 	</insert>
+
+	<!-- 허주한 -->
+	<select id="lastInsertId" resultType="int">
+	<![CDATA[
+	select last_insert_id()
+	]]>
+	</select>
 
 	<!-- 정예린 -->
 	<update id="updateNoti" parameterType="map">
@@ -118,6 +130,14 @@
 	 		where SLCTN_NOTI_NO=#{notiVo.slctnNotiNo }
 		]]>
 	</update>
+
+
+	<!-- 정예린 -->
+	<insert id="insertNotiInfo" parameterType="codeVo">
+		<![CDATA[	
+			insert into slctn_noti_info (SLCTN_NOTI_NO, CD_ID ) values (#{slctnNotiNo},#{cdId});
+		]]>
+	</insert>
 
 
 

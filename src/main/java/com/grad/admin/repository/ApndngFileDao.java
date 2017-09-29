@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.grad.admin.vo.ApndngFileVo;
 
-/*
- * 허주한
- */
+
 
 @Repository
 public class ApndngFileDao {
@@ -27,13 +25,13 @@ public class ApndngFileDao {
 
 
 	public ApndngFileVo getFileInfo(Long id) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.selectOne("apndngfile.getFileInfo", id);
 	}
 
 
 	public List<ApndngFileVo> getFileList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.selectList("apndngfile.getFileList", map);
 	}
 	

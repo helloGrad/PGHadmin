@@ -20,25 +20,20 @@ var clickCharBtn = function(){
 	var start = matchChar[char][0];
 	var end = matchChar[char][1];
 	
-	
-	console.log(type);
-	console.log(start);
-	console.log(end);
-	
-	
+
 	$.ajax({
 		url : "/admin/organz/api/getlist?type="+type+"&start="+start+"&end="+end,
 		type : "get",
 		dataType : "json",
 		data : "",
 		success : function(response) {
-			console.log(response.data)
-			console.log(response.data.length)
+		
+		
 			$("#fetchList").empty();
 			for(var i = 0 ; i<response.data.length ; i++){
 				$("#fetchList").append("<div class='col-md-12'> " +
 				"<h3> " +
-				"<a	href='${pageContext.servletContext.contextPath }/organz/updateform?no=" + response.data[i].orgnzNo +"&type="+response.data[i].orgnzDstnct+"'>"+response.data[i].orgnzFullNm+"</a> "+
+				"<a	href='/admin/organz/updateform?no=" + response.data[i].orgnzNo +"&type="+response.data[i].orgnzDstnct+"'>"+response.data[i].orgnzFullNm+"</a> "+
 				"</h3> " +
 				"<hr> </div>");
 			}

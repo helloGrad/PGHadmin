@@ -6,6 +6,10 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <script type="text/javascript">
 
 var setPdata = function(no, name, type){
@@ -23,12 +27,6 @@ var setPdata = function(no, name, type){
 }
 
 </script>
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 </head>
 <body>
 

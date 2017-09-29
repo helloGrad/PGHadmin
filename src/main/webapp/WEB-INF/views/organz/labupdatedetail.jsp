@@ -6,69 +6,40 @@
 <%
 	pageContext.setAttribute("space", " ");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/list.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/adminform.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/list.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminform.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <style>
 textarea {
 	width: 300px;
 	overflow: visible
 }
-
-
-
-    /* autocomplete 스크롤 관련 css*/
+   
 .ui-autocomplete {
-            max-height: 100px;
-            overflow-y: auto;
-            /* prevent horizontal scrollbar */
-            overflow-x: hidden;
-            /* add padding to account for vertical scrollbar */
-            padding-right: 20px;
-    }
-    /* IE 6 doesn't support max-height
-     * we use height instead, but this forces the menu to always be this tall
-     */
-  
-  
-  
+     max-height: 100px;
+     overflow-y: auto;
+     overflow-x: hidden;
+     padding-right: 20px;
+     }
+ 
 </style>
-
-
-<script>
-	function resize(obj) {
-		obj.style.height = "1px";
-		obj.style.height = (20 + obj.scrollHeight) + "px";
-	}
-</script>
-
-
 <script type="text/javascript">
-
-
 var index=0;
-
 var codeList = JSON.parse('${codeList}');
 
-	
-	
-	
-	
+function resize(obj) {
+	obj.style.height = "1px";
+	obj.style.height = (20 + obj.scrollHeight) + "px";
+}
 </script>
-
-
-
-
 </head>
 <body>
 
@@ -173,7 +144,7 @@ var codeList = JSON.parse('${codeList}');
 							<input type="checkbox" id="DE00003" name="cdlist" value="DE00003" />석박사통합 &nbsp;
 							
 						<br> <br>
-						 <!-- 맞춤정보 입력란 -->
+						
 						<div class="ui-widget">
 	  					<label for="tags">연구분야 : </label>
 	  					<input id="tags">

@@ -9,6 +9,7 @@ public class CodeVo {
 	private String prntsCdId;
 	private String engCodeNm;
 	private Long orgnzNo;
+	private Long slctnNotiNo;
 	
 	public String getCdId() {
 		return cdId;
@@ -47,16 +48,18 @@ public class CodeVo {
 	public void setOrgnzNo(Long orgnzNo) {
 		this.orgnzNo = orgnzNo;
 	}
+	
+	public Long getSlctnNotiNo() {
+		return slctnNotiNo;
+	}
+	public void setSlctnNotiNo(Long slctnNotiNo) {
+		this.slctnNotiNo = slctnNotiNo;
+	}
 	@Override
 	public String toString() {
 		return "CodeVo [cdId=" + cdId + ", cdNm=" + cdNm + ", cdDstnct=" + cdDstnct + ", prntsCdId=" + prntsCdId
-				+ ", engCodeNm=" + engCodeNm + ", orgnzNo=" + orgnzNo + "]";
+				+ ", engCodeNm=" + engCodeNm + ", orgnzNo=" + orgnzNo + ", slctnNotiNo=" + slctnNotiNo + "]";
 	}
-
-	
-	
-	
-	
-	
+		
 
 }

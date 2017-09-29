@@ -12,9 +12,6 @@ import com.grad.admin.vo.MemberVo;
 
 
 
-/*
- * 정예린, 박가혜
- */	
 
 @Service
 public class MemberService {

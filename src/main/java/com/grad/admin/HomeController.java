@@ -11,8 +11,9 @@ import com.grad.admin.security.Auth;
 
 @Controller
 public class HomeController {
+	
 	/*
-	 * 정예린
+	 * 정예린, 메인페이지
 	 */
 	@Auth(role=Auth.Role.ADMIN) 
 	@RequestMapping(value = "/", method = RequestMethod.GET)

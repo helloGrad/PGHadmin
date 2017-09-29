@@ -24,7 +24,7 @@ import com.grad.admin.vo.MemberVo;
 
 
 /*
- * 정예린,박가혜
+ * 정예린,박가혜, 로그인 기능
  */	
 @Controller
 @RequestMapping("/user")
@@ -37,26 +37,17 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 
-		System.out.println("login main");
 		return "login";
 	}
  
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String register(@ModelAttribute MemberVo memberVo) {
 
-		System.out.println(memberVo.getEmail() + " " + memberVo.getPw() + " " + memberVo.getNknm());
 		memberService.register(memberVo);
 
 		return "redirect:/user/login";
 	}
 
 
-	/////////////////////////////// mypage 세션 확인 ///////////////////////////////////
-	@Auth(role=Auth.Role.ADMIN) 
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage(Locale locale, Model model,@AuthUser MemberVo authUser) {
-		System.out.println(authUser.getMbDstnct());
-		return "mypage";
-	}
-
+	
 }

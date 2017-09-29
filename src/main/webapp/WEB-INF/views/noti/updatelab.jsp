@@ -3,18 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/list.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/adminform.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/list.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminform.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 </head>
 <body>
@@ -22,7 +19,7 @@
 	<c:import url="/WEB-INF/views/include/header.jsp" />
 
 	<div class="container">
-		<!-- ///// filter (대분류) //////-->
+		
 		<div class="row">
 			<a id="gradBtn" class="btn btn-info"
 				href="${pageContext.servletContext.contextPath }/noti/list">모집공고
@@ -40,8 +37,21 @@
 					<input type="hidden" name="tabnm" value="lab"> <input
 						type="hidden" name="slctnNotiNo" value="${vo.slctnNotiNo }">
 					<input type="hidden" name="adminNo" value="${authUser.mbNo }">
-					<!--/////////////////////////// main content ///////////////////////////////////// -->
+					
 					<div class=col-lg-8>
+						<div class="form-group">
+							<label>▣ 광고구분</label> <select id="" name="pchrgYn">
+								<option value="Y">유료</option>
+								<option value="N">무료</option>
+							</select>
+							<label>▣ 모집년도</label> 
+							<input type="text" name="slctnYycl">
+							<label>▣ 모집학기</label> <select id="" name="slctnSemstr">
+								<option value="전기">전기</option>
+								<option value="후기">후기</option>
+								<option value="상시">상시</option>
+							</select>
+						</div>
 						<div class="form-group">
 							<label for="inputlg"> ▣ 제목</label> <input
 								class="form-control input-lg" id="slctnTitle" name="slctnTitle"
@@ -60,13 +70,13 @@
 								type="button" value="기관검색하기" onclick="openOrganzSearch('연구실')">
 						</div>
 						<div class="row">
-							<!--////////////////////// 모집시작일 //////////////////////-->
+							
 							<div class="col-lg-6">
 								<label for="inputlg"> ▣ 모집기간(시작) </label> <input
 									class="form-control input-lg" id="slctnBeginDt"
 									name="slctnBeginDt" type="text" value="${vo.slctnBeginDt }">
 							</div>
-							<!--////////////////////// 모집종료일 //////////////////////-->
+							
 							<div class="col-lg-6">
 								<label for="inputlg"> ▣ 모집기간(종료) </label> <input
 									class="form-control input-lg" id="slctnEndDt" name="slctnEndDt"
@@ -77,7 +87,7 @@
 						<p class="contents">
 						<div class="form-group">
 							<label for="">▣ 연구실 소개</label>
-							<!--////////////////////// 주요 연구 분야 //////////////////////-->
+						
 							<textarea class="form-control" rows="4" id="" name="slctnText">${vo.slctnText }</textarea>
 						</div>
 						</p>
@@ -85,7 +95,7 @@
 						<p class="contents">
 						<div class="form-group">
 							<label for="">▣ 주요 연구 분야</label>
-							<!--////////////////////// 주요 연구 분야 //////////////////////-->
+							
 							<textarea class="form-control" rows="4" id=""
 								name="prmryResrchField">${vo.prmryResrchField }</textarea>
 						</div>
@@ -94,7 +104,7 @@
 						<p class="contents">
 						<div class="form-group">
 							<label for=""> ▣ 모집대상</label>
-							<!--////////////////////// 모집대 //////////////////////-->
+							
 							<textarea class="form-control" rows="3" id="slctnNops"
 								name="slctnNops">${vo.slctnNops }</textarea>
 						</div>
@@ -103,7 +113,7 @@
 						<div class="form-group">
 							<div class="form-group">
 								<label> ▣ 지원자격 </label>
-								<!--////////////////////// 지원자격 //////////////////////-->
+								
 								<textarea class="form-control" rows="2" id="suprtQualf"
 									name="suprtQualf">${vo.suprtQualf }</textarea>
 							</div>
@@ -113,7 +123,7 @@
 						<p class="contents">
 						<div class="form-group">
 							<label for="">▣ 전형방법</label>
-							<!--////////////////////// 주요 연구 분야 //////////////////////-->
+							
 							<textarea class="form-control" rows="4" id="slsnMth"
 								name="slsnMth">${vo.slsnMth }</textarea>
 						</div>
@@ -121,7 +131,7 @@
 						<p class="contents">
 						<div class="form-group">
 							<label for="">▣ 제출서류</label>
-							<!--////////////////////// 주요 연구 분야 //////////////////////-->
+							
 							<textarea class="form-control" rows="4" id="sbmtDocText"
 								name="sbmtDocText">${vo.sbmtDocText }</textarea>
 						</div>
@@ -129,7 +139,14 @@
 						<div class="form-group">
 							<div class="form-group">
 								<label> ▣ 전공분야 </label>
-								<textarea class="form-control" rows="2" id="" name=""></textarea>
+								<div class="ui-widget">
+				  					<label for="tags">연구분야 : </label>
+				  					<input id="tags">
+				  					<div id="duplicateMsg" style="display: none">중복입니다 !!</div>
+				  					<div id="cdNmList">
+				  					</div>
+									</div>
+									<br> <br>
 							</div>
 						</div>
 						<hr>
@@ -138,28 +155,30 @@
 						</p>
 						<div class="form-group">
 							<label for="inputlg"> ▣ 담당자 </label>
-							<!--////////////////////// 담당자명 //////////////////////-->
+							
 							<input class="form-control input-lg" id="chrgrNm" name="chrgrNm"
 								type="text" value="${vo.chrgrNm }">
 						</div>
 						<div class="form-group">
 							<label for="inputlg"> ▣ 전화번호 </label>
-							<!--////////////////////// 담당자 전화번호 //////////////////////-->
+							
 							<input class="form-control input-lg" id="chrgrTelNo"
 								name="chrgrTelNo" type="text" value="${vo.chrgrTelNo }">
 						</div>
 						<div class="form-group">
 							<label for="inputlg"> ▣ email </label>
-							<!--////////////////////// 지원자격 //////////////////////-->
+							
 							<input class="form-control input-lg" id="chrgrEmail"
 								name="chrgrEmail" type="text" value="${vo.chrgrEmail }">
 						</div>
 						<div class="form-group">
-							<label for="inputlg"> ▣ 첨부파일 </label> <input
+							<label for="inputlg"> ▣ 첨부파일 </label> 
+							
+							<input
 								class="form-control input-lg" id="" name="" type="text">
 						</div>
 					</div>
-					<!--/////////////////////////// side floating menu//////////////////////////////// -->
+					
 					<div class="col-lg-4">
 						<div class="well">
 							<p class="lead">지원 정보</p>
@@ -350,7 +369,7 @@
 							</div>
 							<div class="form-group">
 								<label for="inputlg"> ▣ 기타 지원 내역 </label>
-								<!--////////////////////// bk21 여부 //////////////////////-->
+							
 
 
 								<input class="form-control input-lg" id="suprtFvrText"
@@ -387,9 +406,7 @@
 	</div>
 
 	<c:import url="/WEB-INF/views/include/footer.jsp" />
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/js/search.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/search.js"></script>
 </body>
 </html>

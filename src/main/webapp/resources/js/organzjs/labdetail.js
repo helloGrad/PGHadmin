@@ -1,7 +1,5 @@
 
 
-
-	//박가혜 2017-08-30
 	$(function() {
 	
 		
@@ -12,7 +10,7 @@
 				
 				if (codeList[i].cdId == this.value) {
 					
-					this.checked = true; //checked 처리
+					this.checked = true; 
 					
 				}
 			}
@@ -26,7 +24,7 @@
 				var name = codeList[i].cdNm;
 	    		var no = codeList[i].cdId;
 	    		
-	    		checkList.push(name);
+	    		codeList.push(name);
 	    		
 	    		$("#cdNmList").append("<div id='"+no+"'><span id='cdNm' name='cdNm' val='"+no+"'>"+name+"</span>" +
 	    				"<button id='deleteBtn' type='button' onclick='clickDelete(\""+no+"\");' class='btn'>X</button>" +
@@ -42,6 +40,3 @@
 		}
 		
 	});
-		
-	
-

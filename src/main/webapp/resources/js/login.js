@@ -1,5 +1,4 @@
 
-// 회원가입 폼 유효성 검사
 
 $("#join-form")
 		.submit(
@@ -30,7 +29,7 @@ $("#join-form")
 					}
 
 					var inputPwd = $("#rpwd").val();
-					console.log(inputPwd);
+					
 					if (inputPwd === "") {
 						$("#pwd-check p").text("비밀번호는 필수 입력 항목입니다.");
 						$("#rpwd").focus();
@@ -51,7 +50,6 @@ var empty = function() {
 	$("#pwd-check p").empty();
 }
 
-// 이메일 부분이 바뀌면 중복체크 버튼이 보이도록 설정
 $("#remail").change(function() {
 	var $imageCheck = $("#check-image");
 	var $checkButton = $("#check-button");
@@ -59,7 +57,7 @@ $("#remail").change(function() {
 	$checkButton.show();
 });
 
-// 이메일 중복 검사
+
 $("#check-button").click(function() {
 
 	$.ajax({
@@ -68,11 +66,10 @@ $("#check-button").click(function() {
 		dataType : "json",
 		data : "",
 		success : function(response) {
-			console.log(response);
+			
 			if (response.data == true) {
 				alert("이미 존재하는 이메일 입니다. 다른 이메일을 사용해주세요.");
-				console.log("이메일 중복");
-
+				
 			} else {
 				var $imageCheck = $("#check-image");
 				var $checkButton = $("#check-button");

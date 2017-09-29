@@ -1,24 +1,5 @@
 var codeList1 = new Array();
 
-var changFrom = function(selectvalue) {
-	
-	document.getElementById('orgnzNo1').value = '';
-	document.getElementById('organzinput').value = '';
-	if (selectvalue === '대학원') {
-
-		document.getElementById('organzinfo').style.visibility = 'visible';
-		document.getElementById('search').innerHTML = "<input type='button' value='기관검색하기' onclick='openOrganzSearch(\"대학교\");'> ";
-	}
-	else if (selectvalue === '학과') {
-		document.getElementById('organzinfo').style.visibility = 'visible';
-		document.getElementById('search').innerHTML = "<input type='button' value='기관검색하기' onclick='openOrganzSearch(\"대학원\");'> ";
-	}
-	else {
-		document.getElementById('organzinfo').style.visibility = 'hidden';
-	}
-
-}
-
 
 var index=0;
 
@@ -28,14 +9,14 @@ var index=0;
 $( function() {
 	
 	var type = $("#type").val()
-	if(type=="학과"||type=="연구실"){
+	if(type=="연구실"||type=="대학원"){
 		fetchListByType(type);
 	}
 	
 
 	   $.extend($.ui.autocomplete.prototype, {
            _renderMenu: function (ul, items) {
-              
+               
                $(ul).unbind("scroll");
                var self = this;
                self._scrollMenu(ul, items);
@@ -64,16 +45,16 @@ $( function() {
                                self._renderItemData(ul, item);
                            });
                            
-                       
+                          
                            $('#' + $(ul).attr('id') + " li").addClass('ui-menu-item');
                            $( ul ).find( "li div" ).addClass( "ui-menu-item-wrapper" );
-                        
+                           
                          
                            if (typeof(self.menu.deactivate) == "function")
                            	self.menu.deactivate();
                            
                            self.menu.refresh();
-                  
+                         
                            ul.show();
                            self._resizeMenu();
                            ul.position($.extend({
@@ -87,7 +68,7 @@ $( function() {
                }
 
                $.each(results, function (index, item) {
-              
+               	
 
                	$(item).addClass("ui-menu-item");
                    self._renderItemData(ul, item);
@@ -141,7 +122,7 @@ $( function() {
         		checkList.push(ui.item.label);
         		        		index ++;
         		return;
-
+        		
         	}
         },
         minLength: 0,
